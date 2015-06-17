@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        
+        <h3 class="col-md-3">Restaurant List</h3>
+        <div class="col-md-10 pull-right">
+        <a class="btn btn-primary pull-right col-md-3" href="#/users/new">Create a Restaurant</a>
+              <span class="pull-right col-md-4">Search: <input ng-model="location"></span>
+              <span class="pull-right col-md-3">Sort by:
+                <select ng-model="orderProp">
+                  <option value="name">Alphabetical</option>
+                  <option value="id">id</option>
+                </select>
+              </span>  
+        </div>
+        <table class="table table-striped">
+            <tr>
+              
+            </tr>
+            <tr>
+                <th></th>
+                <th> Name</th>
+                <th> Location</th>
+                <th> <span class="pull-right">Actions</span></th>
+            </tr>
+            <tr ng-hide="restaurants.length" >
+                <td colspan="5">No restaurants found, Please create one.</td>
+            </tr>
+            <tr ng-show="restaurants.length">
+              <td colspan="4">{{restaurants.length}} restaurants found</td>
+            </tr>
+            <tr ng-show="restaurants.length" ng-repeat="restaurant in restaurants | filter:location | orderBy:orderProp">
+                <td><img src="{{restaurant.image_url}}" width="75" height="75"></td>
+                <td>{{restaurant.name}}</td>
+                <td>{{restaurant.location}}</td>
+                <td>
+                  <span class="pull-right">
+                    <a href="#/restaurants/{{restaurant.id}}/edit">Edit</a> | <a href="" ng-click="deleteUser(restaurant.id)">Remove</a> | <a href="#/restaurants/{{restaurant.id}}">View</a>
+                  </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

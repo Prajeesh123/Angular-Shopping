@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary" href="#/users/new">Create a Restaurant</a>
+        <h3 class="block">Restaurant List</h3>
+        <table class="table table-striped">
+            <tr>
+                <th> Name</th>
+            </tr>
+            <tr ng-hide="users.length" >
+                <td colspan="5">No restaurants found, Please create one.</td>
+            </tr>
+            <tr ng-show="users.length" ng-repeat="user in users">
+                <td>{{user.name}}</td>
+                <td>
+                    <a href="#/users/{{user.id}}/edit">Edit</a> | <a href="" ng-click="deleteUser(user.id)">Remove</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
